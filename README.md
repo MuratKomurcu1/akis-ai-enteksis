@@ -126,3 +126,5 @@ Bu bir değerlendirme demosudur: yalnız kurgusal veri girilmelidir. E-posta gö
 | README, AI günlüğü ve teslim commit'i | Bu belge, [AI_LOG.md](AI_LOG.md), son teslimde `git rev-parse HEAD` |
 
 AI ile çalışma biçimi ve doğrulama kaydı [AI_LOG.md](AI_LOG.md) dosyasındadır.
+
+İlk banner'daki izometrik illüstrasyon, kullanıcı referansına göre yerleşik Imagegen aracıyla üretilmiştir. [Görselin aslı](public/images/akis-ai-hero.png) ve [tam üretim promptu](docs/hero-image-prompt.txt) depoda bulunur; sayfa metinleri görsele gömülmeden HTML olarak sunulur.

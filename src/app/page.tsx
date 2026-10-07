@@ -1,14 +1,13 @@
+import Image from "next/image";
 import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
   Check,
   FileText,
-  Layers3,
   MessageSquareText,
   Search,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 import { LeadForm } from "@/components/lead-form";
 
@@ -61,38 +60,30 @@ export default function Home() {
       </header>
 
       <main id="icerik">
-        <section className="hero container" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow"><span className="eyebrow-dot" /> Yapay zekâ, işinizin akışında.</p>
-            <h1 id="hero-title">Az tekrar.<br />Daha çok <span className="accent-word">ilerleme<svg viewBox="0 0 370 16" aria-hidden="true"><path d="M4 11C94 1 245 0 366 8" /></svg>.</span></h1>
-            <p className="hero-description">Ekibinizin zamanını alan işleri akıllı akışlara dönüştürelim. Bilginize ulaşın, müşterilerinize yetişin, asıl işinize odaklanın.</p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#talep">İhtiyacınızı konuşalım <ArrowUpRight size={20} aria-hidden="true" /></a>
-              <a className="text-link" href="#hizmetler">Hizmetleri keşfedin <ArrowDown size={16} aria-hidden="true" /></a>
+        <section className="hero-banner" aria-labelledby="hero-title">
+          <div className="hero container">
+            <div className="hero-copy">
+              <p className="eyebrow"><span className="eyebrow-dot" /> Yapay zekâ, işinizin akışında.</p>
+              <h1 id="hero-title">Az tekrar.<br />Daha çok <span className="accent-word">ilerleme<svg viewBox="0 0 370 16" aria-hidden="true"><path d="M4 11C94 1 245 0 366 8" /></svg>.</span></h1>
+              <p className="hero-description">Ekibinizin zamanını alan işleri akıllı akışlara dönüştürelim. Bilginize ulaşın, müşterilerinize yetişin, asıl işinize odaklanın.</p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#talep">İhtiyacınızı konuşalım <ArrowUpRight size={20} aria-hidden="true" /></a>
+                <a className="text-link" href="#hizmetler">Hizmetleri keşfedin <ArrowDown size={16} aria-hidden="true" /></a>
+              </div>
+              <p className="hero-note"><ShieldCheck size={17} aria-hidden="true" /> Kontrol sizde. Yapay zekâ işinize destek olsun.</p>
             </div>
-            <p className="hero-note"><ShieldCheck size={17} aria-hidden="true" /> Kontrol sizde. Yapay zekâ işinize destek olsun.</p>
-          </div>
 
-          <div className="flow-illustration" role="img" aria-label="Örnek bilgi akışı: Şirket dokümanları bilgi asistanına aktarılır, asistan sorulara kaynak göstererek yanıt verir.">
-            <div className="flow-caption" aria-hidden="true"><span className="small-dot" /> Bir bilgi akışı, sadeleşti.</div>
-            <div className="flow-source" aria-hidden="true">
-              <div className="flow-source-icon"><Layers3 size={21} /></div>
-              <div><strong>Şirket bilginiz</strong><span>Dokümanlar · Kılavuzlar · Notlar</span></div>
-              <span className="source-count">GİRDİ</span>
+            <div className="hero-art">
+              <Image
+                className="hero-art-image"
+                src="/images/akis-ai-hero.png"
+                alt="Şirket dokümanlarını bilgi asistanı, müşteri desteği ve belge işleme akışlarına bağlayan izometrik yapay zekâ illüstrasyonu."
+                width={1448}
+                height={1086}
+                sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 850px) 640px, (max-width: 1100px) 50vw, 600px"
+                preload
+              />
             </div>
-            <div className="flow-connector" aria-hidden="true"><span /><ArrowDown size={15} /></div>
-            <div className="flow-engine" aria-hidden="true">
-              <span className="engine-icon"><Sparkles size={24} /></span>
-              <div><span className="engine-label">AKIŞ AI</span><strong>Bilgi anlam kazanır.</strong></div>
-              <div className="engine-orbit"><i /><i /><i /></div>
-            </div>
-            <div className="flow-connector" aria-hidden="true"><span /><ArrowDown size={15} /></div>
-            <div className="flow-answer" aria-hidden="true">
-              <div className="answer-question"><span className="avatar">E</span><p>İzin talebimi nasıl iletebilirim?</p></div>
-              <div className="answer-response"><span className="answer-spark"><Sparkles size={16} /></span><div><p>İzin talep formunu doldurup ekip yöneticinizin onayına iletebilirsiniz.</p><span className="answer-source"><FileText size={12} /> Çalışan rehberi · Bölüm 4</span></div></div>
-              <div className="answer-footer"><Check size={14} /> Kaynağı belli. Kontrol edilebilir.</div>
-            </div>
-            <p className="flow-disclaimer" aria-hidden="true">Örnek senaryo · Gerçek şirket verisi içermez.</p>
           </div>
         </section>
 

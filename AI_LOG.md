@@ -77,3 +77,13 @@ Kullanıcı ilk arayüzdeki hazır AI şablonu hissinin giderilmesini ve daha ö
 ## Önceki arayüze dönüş — 8 Ekim 2026
 
 Kullanıcı son editoryal tasarımı beğenmediğini belirterek önceki tasarıma dönülmesini istedi. Mavi-beyaz arayüz, önceki form sunumu, ikon ve font düzeni geri getirildi. Uygulama kaynakları `3dedf77` sürümüyle eşleşecek şekilde geri alındı; veritabanı ve API davranışı değiştirilmedi. Tasarım denemesinin AI çalışma kaydı süreç geçmişi olarak korundu.
+
+## Referansa göre banner görseli — 8 Ekim 2026
+
+Kullanıcı, katmanlı izometrik teknoloji illüstrasyonu içeren bir referans paylaşarak ilk banner için Akış AI konseptine uygun bir görsel hazırlanmasını ve yerleştirilmesini istedi.
+
+- Yerleşik Imagegen aracıyla, şeffaf arka planlı özgün bir raster illüstrasyon üretildi. Merkezde şirket dokümanları; çevresinde bilgi, destek ve belge işleme modülleri bulunur. Görsel bir kavram illüstrasyonudur; çalışan ürün ekranı veya gerçek müşteri verisi göstermez.
+- Kullanılan tam prompt ve üretim modu [docs/hero-image-prompt.txt](docs/hero-image-prompt.txt) içinde kayıtlıdır. Asıl çıktı [public/images/akis-ai-hero.png](public/images/akis-ai-hero.png), 1448 × 1086 piksel ve alfa kanallı PNG'dir.
+- Banner masaüstünde solda görsel, sağda HTML başlık ve bağlantılar olacak şekilde düzenlendi. Mobilde metin ve eylemler önce gelir. Next.js Image, boyut bilgisi, responsive `sizes`, preload ve açıklayıcı alternatif metinle kullanıldı.
+- Ana ajan görseli üretti ve sayfaya eklenmiş halini inceledi; arayüz ajanı hero düzenini uyguladı; test ajanı mevcut testleri değiştirmeden çalıştırdı. Diğer sayfa bölümleri ve kayıt akışı korunmuştur.
+- Production build, TypeScript ve ESLint geçti. Yerel production sunucusunda 8/8 Playwright testi geçti; gerçek API kayıt senaryosu ve 390/1440 px Axe kontrolleri dahil. 320, 390, 768, 1024 ve 1440 px genişliklerinde yatay taşma yok, görsel yükleniyor ve kırpılmıyor. Masaüstü ve mobil ekran görüntüleri görsel olarak incelendi.
