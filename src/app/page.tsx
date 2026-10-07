@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { LeadForm } from "@/components/lead-form";
 import { ServiceWindows } from "@/components/service-windows";
+import { StaticChatbot } from "@/components/static-chatbot";
 
 export default function Home() {
   return (
@@ -115,6 +116,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer"><div className="container footer-inner"><a className="brand" href="#" aria-label="Akış AI sayfa başına dön"><span className="brand-symbol" aria-hidden="true"><i /><i /><i /></span><span>akış<span className="brand-ai">ai</span></span></a><p>İşinize alan açan yapay zekâ.</p><span>Akış AI, kurgusal bir markadır. <span className="footer-year">© 2026</span></span></div></footer>
+      <StaticChatbot />
     </>
   );
 }

@@ -186,7 +186,7 @@ select:invalid { color: #66768b; }
 .record-reference > span { display: block; font-size: 10px; color: var(--muted); margin-bottom: 6px; }
 .record-reference code { display: block; font-size: 11px; overflow-wrap: anywhere; }
 .success-panel .button { width: 100%; font-size: 12px; }
-.site-footer { border-top: 1px solid var(--line); padding-block: 29px; }
+.site-footer { border-top: 1px solid var(--line); padding-top: 29px; padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
 .footer-inner { display: flex; align-items: center; gap: 27px; }
 .site-footer .brand { font-size: 27px; }
 .site-footer .brand-ai { font-size: 19px; }
