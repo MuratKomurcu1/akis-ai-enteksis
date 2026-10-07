@@ -60,7 +60,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 .sr-only, .honeypot-field { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .skip-link { position: fixed; top: -70px; left: 20px; padding: 12px 20px; background: var(--ink); color: #fff; z-index: 100; border-radius: 4px; }
 .skip-link:focus { top: 12px; }
-.site-header { height: 96px; border-bottom: 1px solid var(--line); }
+.site-header { height: 96px; background: var(--ink); color: #fff; border-bottom: 1px solid #40516a; }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
 .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-display); font-size: 33px; font-weight: 800; letter-spacing: -1.8px; }
 .brand-ai { color: var(--blue); margin-left: 3px; font-size: 22px; font-weight: 600; letter-spacing: -1px; }
@@ -69,10 +69,13 @@ h1, h2, h3 { font-family: var(--font-display); }
 .brand-symbol i:nth-child(2) { height: 29px; }
 .brand-symbol i:nth-child(3) { height: 23px; }
 nav { display: flex; align-items: center; gap: 34px; }
-.nav-link { font-size: 14px; font-weight: 550; color: #465267; transition: color 150ms; }
-.nav-link:hover { color: var(--blue); }
-.header-cta { font-size: 13px; font-weight: 650; display: flex; align-items: center; gap: 16px; border: 1px solid #c7d0df; padding: 13px 18px; border-radius: 6px; transition: border-color 150ms, background 150ms; }
-.header-cta:hover { border-color: var(--ink); background: var(--surface); }
+.nav-link { font-size: 14px; font-weight: 550; color: #d9e3f0; transition: color 150ms; }
+.nav-link:hover { color: var(--mint); }
+.header-cta { font-size: 13px; font-weight: 650; display: flex; align-items: center; gap: 16px; color: #fff; border: 1px solid #8293ab; padding: 13px 18px; border-radius: 6px; transition: border-color 150ms, background 150ms; }
+.header-cta:hover { border-color: var(--mint); background: #203b58; }
+.site-header .brand-ai, .site-footer .brand-ai { color: var(--mint); }
+.site-header .brand-symbol i, .site-footer .brand-symbol i { background: var(--mint); }
+.site-header a:focus-visible, .site-footer a:focus-visible { outline-color: var(--mint); }
 .hero-banner { position: relative; isolation: isolate; overflow: hidden; background: #fff; }
 .hero-banner::before, .hero-banner::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
 .hero-banner::before { width: 650px; height: 340px; right: -185px; top: -285px; border-radius: 45% 55% 60% 40%; background: #f4f6ff; transform: rotate(-17deg); }
@@ -127,7 +130,7 @@ h2 { font-size: clamp(32px, 3.3vw, 44px); font-weight: 650; line-height: 1.25; l
 .workflow-note { margin-top: 19px; font-size: 11px; letter-spacing: .35px; color: #d1c8ef; }
 .workflow-art { min-width: 0; position: relative; width: 112%; margin-left: -2%; }
 .workflow-art img { display: block; width: 100%; height: auto; object-fit: contain; }
-.approach-section { background: #142841; color: #fff; padding-block: 76px 78px; }
+.approach-section { background: var(--ink); color: #fff; padding-block: 76px 78px; }
 .approach-section .eyebrow { color: var(--mint); font-size: 10px; }
 .approach-heading { margin-bottom: 47px; }
 .approach-section .section-intro { color: #aebcce; }
@@ -186,13 +189,13 @@ select:invalid { color: #66768b; }
 .record-reference > span { display: block; font-size: 10px; color: var(--muted); margin-bottom: 6px; }
 .record-reference code { display: block; font-size: 11px; overflow-wrap: anywhere; }
 .success-panel .button { width: 100%; font-size: 12px; }
-.site-footer { border-top: 1px solid var(--line); padding-top: 29px; padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+.site-footer { background: var(--ink); color: #fff; border-top: 1px solid #40516a; padding-top: 29px; padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
 .footer-inner { display: flex; align-items: center; gap: 27px; }
 .site-footer .brand { font-size: 27px; }
 .site-footer .brand-ai { font-size: 19px; }
 .site-footer .brand-symbol { transform: scale(.8) skewY(-18deg); width: 24px; margin-right: -4px; }
-.footer-inner > p { color: #59697f; font-size: 11px; }
-.footer-inner > span { color: #59697f; font-size: 10px; margin-left: auto; }
+.footer-inner > p { color: #c5d1e1; font-size: 11px; }
+.footer-inner > span { color: #c5d1e1; font-size: 10px; margin-left: auto; }
 .footer-year { margin-left: 20px; }
 
 @media (min-width: 1440px) {

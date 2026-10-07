@@ -111,3 +111,9 @@ Kullanıcı sol alt köşeye statik bir chatbot eklenmesini istedi. Hazır sorul
 - İnceleme sırasında sohbet geçmişine klavye odağı ve çok kısa yatay ekranlarda panel kaydırması eklendi. Mobil ekran görüntüsünde sohbet düğmesinin footer metnini örtmesi, güvenli alanı da hesaba katan alt boşlukla giderildi. Talep formu gönderim sırasında devre dışıysa yönlendirme başlığa odaklanır.
 - Mevcut 8/8 E2E testi geçti. Dört hazır yanıt, açma/kapatma, Escape ile odak geri dönüşü, modal olmayan Tab geçişi, forma yönlendirme ve kapatılıp açıldığında oturum içi konuşma davranışı tarayıcıda doğrulandı. Sohbet etkileşimleri API isteği veya local/session storage yazımı oluşturmadı. 320/390/1440 px ve 320 × 480 px açık panel Axe kontrolleri temizdi.
 - Son build, TypeScript ve ESLint geçti. 740 × 360 yatay görünümde sabit alt çubuğun odaklanan butonları örtmesi `scroll-padding` ile giderildi; dört butonun merkezleri görünür ve tıklanabilir olarak ölçüldü. Son 740 × 360, 390 × 844 ve 1440 × 900 açık panel Axe taramalarında sıfır ihlal; mobil footer öğelerinde düğmeyle örtüşme yok. Kontrollü bekleyen API yanıtıyla devre dışı forma yönlendirme ve başlığa odak dönüşü de doğrulandı.
+
+## Navbar ve footer renk uyumu — 8 Ekim 2026
+
+Kullanıcı üst ve alt gezinme alanlarının yaklaşım bölümüyle aynı koyu mavi olmasını istedi. Üç alan ortak `--ink` (`#142841`) rengini kullanır; marka ve menü yazıları beyaz/açık tonlara, vurgu ve klavye odak çizgileri mint rengine çevrildi. Hover durumları da koyu zemine göre ayarlandı.
+
+Production build, TypeScript ve ESLint geçti. Tarayıcıda üç arka planın hesaplanan renkleri eşit. 390/1440 px Axe taramaları ve üst menü bağlantılarının normal/hover/odak kontrolleri sıfır ihlal verdi; 320/390/1440 px'de yatay taşma yok. Değişiklik yalnız renk sunumunu etkilediği için yeni test yazılmadı ve API testleri gereksiz yere tekrarlanmadı.
