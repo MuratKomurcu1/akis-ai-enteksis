@@ -4,42 +4,10 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  FileText,
-  MessageSquareText,
-  Search,
   ShieldCheck,
 } from "lucide-react";
 import { LeadForm } from "@/components/lead-form";
-
-const offerings = [
-  {
-    number: "01",
-    icon: Search,
-    title: "Şirket içi bilgi asistanı",
-    description:
-      "Dağınık dokümanlarınızı, ekibinizin sorularına kaynaklarıyla yanıt veren bir bilgi asistanına dönüştürelim.",
-    example: "“İzin sürecimiz nasıl işliyor?”",
-    detail: "Bilgiye ulaşmak kolaylaşsın.",
-  },
-  {
-    number: "02",
-    icon: MessageSquareText,
-    title: "Müşteri destek otomasyonu",
-    description:
-      "Tekrar eden soruları karşılayan, gerektiğinde görüşmeyi ekibinize aktaran bir destek akışı tasarlayalım.",
-    example: "“Siparişimin durumunu öğrenebilir miyim?”",
-    detail: "Ekibinize daha fazla alan açılsın.",
-  },
-  {
-    number: "03",
-    icon: FileText,
-    title: "Akıllı belge işleme",
-    description:
-      "Form, fatura ve raporlardaki bilgileri çıkaralım. Kontrol gerektiren kayıtları insan onayına sunalım.",
-    example: "Belgeden düzenli, işlenebilir veriye.",
-    detail: "Elle veri girişi azalsın.",
-  },
-];
+import { ServiceWindows } from "@/components/service-windows";
 
 export default function Home() {
   return (
@@ -96,21 +64,34 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="services-section container section-spacing" id="hizmetler" aria-labelledby="services-title">
-          <div className="section-heading">
-            <div><p className="eyebrow">NEREDEN BAŞLAYABİLİRİZ?</p><h2 id="services-title">Doğru yerde,<br />işe yarayan yapay zekâ.</h2></div>
-            <p className="section-intro">Her işe aynı çözüm olmaz. İş akışınızdaki gerçek bir ihtiyacı bulalım, oradan başlayalım.</p>
+        <section className="services-section section-spacing" id="hizmetler" aria-labelledby="services-title">
+          <div className="container">
+            <div className="section-heading">
+              <div><p className="eyebrow">NEREDEN BAŞLAYABİLİRİZ?</p><h2 id="services-title">Doğru yerde,<br />işe yarayan yapay zekâ.</h2></div>
+              <p className="section-intro">Her işe aynı çözüm olmaz. İş akışınızdaki gerçek bir ihtiyacı bulalım, oradan başlayalım.</p>
+            </div>
+            <ServiceWindows />
           </div>
-          <div className="service-grid">
-            {offerings.map((offering) => (
-              <article className="service-card" key={offering.number}>
-                <div className="service-card-top"><span className="service-icon"><offering.icon size={24} strokeWidth={1.7} aria-hidden="true" /></span><span className="service-number">/{offering.number}</span></div>
-                <h3>{offering.title}</h3>
-                <p className="service-description">{offering.description}</p>
-                <div className="service-example"><span className="example-label">BİR KULLANIM ÖRNEĞİ</span><p>{offering.example}</p></div>
-                <a className="service-link" href="#talep" aria-label={`${offering.title} için ihtiyacınızı paylaşın`}>{offering.detail}<ArrowUpRight size={20} aria-hidden="true" /></a>
-              </article>
-            ))}
+        </section>
+
+        <section className="workflow-banner" aria-labelledby="workflow-title">
+          <div className="container workflow-inner">
+            <div className="workflow-copy">
+              <p className="eyebrow">AKIŞ AI · İNSAN ODAKLI TEKNOLOJİ</p>
+              <h2 id="workflow-title">İşler akışında.<br /><span>Ekibiniz odağında.</span></h2>
+              <p className="workflow-description">Bilgiye ulaşmayı, talepleri karşılamayı ve belgeleri işlemeyi kolaylaştıralım. Ekibinize asıl işi için alan açılsın.</p>
+              <a className="button workflow-cta" href="#talep">İlk akışı birlikte kuralım <ArrowUpRight size={19} aria-hidden="true" /></a>
+              <p className="workflow-note">Akıllı süreçler. Kontrol sizde.</p>
+            </div>
+            <div className="workflow-art">
+              <Image
+                src="/images/akis-workflow-banner.png"
+                alt="Tablet üzerinde çalışan bir kişinin, belge ve iletişim öğeleriyle birlikte renkli izometrik çizimi."
+                width={1448}
+                height={1086}
+                sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 850px) 640px, 60vw"
+              />
+            </div>
           </div>
         </section>
 

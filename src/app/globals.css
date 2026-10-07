@@ -109,20 +109,24 @@ h1 { font-size: clamp(48px, 4.7vw, 64px); font-weight: 750; letter-spacing: -3.5
 .section-heading .eyebrow { margin-bottom: 17px; }
 h2 { font-size: clamp(32px, 3.3vw, 44px); font-weight: 650; line-height: 1.25; letter-spacing: -1.7px; }
 .section-intro { max-width: 350px; font-size: 15px; line-height: 1.8; color: var(--muted); padding-bottom: 4px; }
-.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.service-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 10px; padding: 26px 25px 22px; transition: border-color 150ms, box-shadow 150ms; }
-.service-card:hover { border-color: #bbc9f2; box-shadow: 0 8px 24px #21366606; }
-.service-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 29px; }
-.service-icon { width: 47px; height: 47px; display: grid; place-items: center; color: var(--blue); background: #f0f3ff; border-radius: 9px; }
-.service-number { font-family: var(--font-display); color: #59697f; font-size: 11px; }
-.service-card h3 { font-size: 20px; line-height: 1.4; font-weight: 650; letter-spacing: -.6px; max-width: 250px; }
-.service-description { margin-block: 14px 22px; color: var(--muted); font-size: 13px; line-height: 1.9; }
-.service-example { padding: 17px 14px; background: #f7f8fb; border-radius: 5px; margin-top: auto; min-height: 87px; }
-.example-label { font-size: 8px; font-weight: 550; letter-spacing: 1px; color: #59697f; }
-.service-example p { font-size: 11px; color: #41526b; line-height: 1.6; margin-top: 7px; }
-.service-link { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 22px; margin-top: 3px; font-size: 11px; font-weight: 550; }
-.service-link:hover { color: var(--blue); }
-.service-link svg { color: var(--blue); }
+.services-section { background: #f7f8fb; }
+.services-section .section-heading { margin-bottom: 48px; }
+.workflow-banner { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 100% 100%, #5232ec 0%, transparent 53%), #1b145e; color: #fff; }
+.workflow-banner::before, .workflow-banner::after { content: ""; position: absolute; pointer-events: none; z-index: -1; background: #ffbb19; transform: rotate(-24deg); }
+.workflow-banner::before { width: 520px; height: 27px; top: -19px; left: -124px; }
+.workflow-banner::after { width: 75%; height: 24px; right: -17%; bottom: 26%; }
+.workflow-inner { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 18px; align-items: center; min-height: 540px; padding-block: 66px; }
+.workflow-copy { position: relative; z-index: 1; padding-block: 12px; }
+.workflow-copy .eyebrow { color: #d1c8ff; font-size: 10px; letter-spacing: 1.8px; margin-bottom: 24px; }
+.workflow-copy h2 { font-size: clamp(32px, 3.4vw, 48px); line-height: 1.22; letter-spacing: -1.6px; font-weight: 600; }
+.workflow-copy h2 span { color: #ffe096; }
+.workflow-description { max-width: 390px; font-size: 15px; line-height: 1.85; color: #d7d4ec; margin-top: 23px; }
+.workflow-cta { background: #ffbf23; color: #24184d; margin-top: 28px; border-radius: 4px; gap: 18px; }
+.workflow-cta:hover { background: #ffd363; }
+.workflow-cta:focus-visible { outline-color: #fff; }
+.workflow-note { margin-top: 19px; font-size: 11px; letter-spacing: .35px; color: #d1c8ef; }
+.workflow-art { min-width: 0; position: relative; width: 112%; margin-left: -2%; }
+.workflow-art img { display: block; width: 100%; height: auto; object-fit: contain; }
 .approach-section { background: #142841; color: #fff; padding-block: 76px 78px; }
 .approach-section .eyebrow { color: var(--mint); font-size: 10px; }
 .approach-heading { margin-bottom: 47px; }
@@ -195,6 +199,10 @@ select:invalid { color: #66768b; }
   .hero { min-height: 650px; padding-top: 87px; padding-bottom: 92px; }
 }
 
+@media (max-width: 1399px) {
+  .workflow-art { width: 100%; margin-left: 0; }
+}
+
 @media (max-width: 1100px) {
   .container { width: calc(100% - 64px); }
   .hero { gap: 35px; min-height: 560px; padding-block: 64px; }
@@ -205,14 +213,17 @@ select:invalid { color: #66768b; }
   .hero-actions .text-link { font-size: 11px; gap: 4px; }
   .principles-inner { gap: 16px; }
   .principles-inner > span { font-size: 11px; }
-  .service-card { padding-inline: 20px; }
-  .service-card h3 { font-size: 18px; }
-  .service-link { font-size: 10px; }
   .contact-grid { gap: 58px; }
   .lead-form-panel { padding: 26px; }
 }
 
 @media (max-width: 850px) {
+  .workflow-inner { grid-template-columns: 1fr; gap: 25px; padding-top: 58px; padding-bottom: 30px; }
+  .workflow-copy { max-width: 580px; }
+  .workflow-copy h2 { font-size: 46px; }
+  .workflow-description { max-width: 490px; }
+  .workflow-art { width: 100%; max-width: 640px; margin-left: 0; justify-self: center; }
+  .workflow-banner::after { width: 120%; right: -25%; bottom: 24%; }
   .hero { grid-template-columns: 1fr; gap: 28px; min-height: 0; padding-top: 55px; padding-bottom: 45px; }
   .hero-copy { grid-column: 1; grid-row: 1; max-width: 620px; }
   .hero-art { grid-column: 1; grid-row: 2; max-width: 640px; justify-self: center; }
@@ -226,11 +237,6 @@ select:invalid { color: #66768b; }
   .principles-inner > p strong { margin-left: 6px; }
   .section-heading { align-items: start; gap: 25px; flex-direction: column; }
   .section-intro { max-width: 520px; }
-  .service-grid { gap: 15px; }
-  .service-card { padding: 20px 16px; }
-  .service-card h3 { font-size: 17px; }
-  .service-description { font-size: 12px; }
-  .service-link { align-items: start; line-height: 1.6; }
   .steps-grid { gap: 25px; }
   .steps-grid h3 { font-size: 16px; }
   .steps-grid p { font-size: 12px; }
@@ -244,6 +250,16 @@ select:invalid { color: #66768b; }
 }
 
 @media (max-width: 600px) {
+  .services-section .section-heading { margin-bottom: 30px; }
+  .workflow-inner { padding-top: 47px; padding-bottom: 22px; gap: 18px; }
+  .workflow-copy .eyebrow { font-size: 8px; letter-spacing: 1.1px; margin-bottom: 20px; }
+  .workflow-copy h2 { font-size: clamp(31px, 8vw, 42px); letter-spacing: -1.2px; }
+  .workflow-description { font-size: 14px; margin-top: 20px; }
+  .workflow-cta { padding: 16px 18px; font-size: 12px; }
+  .workflow-note { font-size: 10px; }
+  .workflow-art { width: calc(100% + 8px); max-width: none; }
+  .workflow-banner::before { height: 18px; top: -42px; }
+  .workflow-banner::after { height: 16px; bottom: 15%; }
   html { scroll-padding-top: 24px; }
   .container { width: calc(100% - 40px); }
   .site-header { height: 79px; }
@@ -276,13 +292,6 @@ select:invalid { color: #66768b; }
   .section-heading { gap: 17px; margin-bottom: 28px; }
   .section-heading .eyebrow { margin-bottom: 13px; }
   .section-intro { font-size: 13px; }
-  .service-grid { grid-template-columns: 1fr; gap: 17px; }
-  .service-card { padding: 23px; }
-  .service-card-top { margin-bottom: 20px; }
-  .service-card h3 { font-size: 21px; max-width: none; }
-  .service-description { font-size: 13px; margin-bottom: 20px; }
-  .service-example { min-height: 0; padding: 15px; }
-  .service-link { font-size: 11px; padding-top: 19px; align-items: center; }
   .approach-section { padding-block: 51px; }
   .approach-section .eyebrow { font-size: 8px; letter-spacing: .95px; }
   .steps-grid { grid-template-columns: 1fr; gap: 25px; }

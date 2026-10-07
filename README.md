@@ -128,3 +128,5 @@ Bu bir değerlendirme demosudur: yalnız kurgusal veri girilmelidir. E-posta gö
 AI ile çalışma biçimi ve doğrulama kaydı [AI_LOG.md](AI_LOG.md) dosyasındadır.
 
 İlk banner'daki izometrik illüstrasyon, kullanıcı referansına göre yerleşik Imagegen aracıyla üretilmiştir. [Görselin aslı](public/images/akis-ai-hero.png) ve [tam üretim promptu](docs/hero-image-prompt.txt) depoda bulunur; sayfa metinleri görsele gömülmeden HTML olarak sunulur.
+
+Hizmetler, [ServiceWindows](src/components/service-windows.tsx) bileşeninde macOS esintili pencerelerle sunulur. Fare takibi yalnız uygun işaretçi ve hareket tercihlerinde çalışır; klavye ve dokunmatik kullanım için hareket gerekmez. Hemen altındaki [ikinci banner çizimi](public/images/akis-workflow-banner.png) kullanıcının düz izometrik referansına göre üretildi; [üretim promptu](docs/workflow-banner-prompt.txt) da kayıttadır.
