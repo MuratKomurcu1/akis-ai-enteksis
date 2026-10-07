@@ -1,148 +1,113 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  FileText,
-  Layers3,
-  MessageSquareText,
-  Search,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { LeadForm } from "@/components/lead-form";
 
-const offerings = [
+const services = [
   {
     number: "01",
-    icon: Search,
-    title: "Şirket içi bilgi asistanı",
-    description:
-      "Dağınık dokümanlarınızı, ekibinizin sorularına kaynaklarıyla yanıt veren bir bilgi asistanına dönüştürelim.",
-    example: "“İzin sürecimiz nasıl işliyor?”",
-    detail: "Bilgiye ulaşmak kolaylaşsın.",
+    title: "Bilgi, arandığı yerde.",
+    name: "Şirket içi bilgi asistanı",
+    description: "Kılavuzlar, notlar, dağınık klasörler. Ekibinizin sorularına şirketinizin kendi bilgisinden, kaynağını göstererek yanıt veren bir asistan.",
+    input: "Dokümanlar ve ekip soruları",
+    output: "Kaynaklı, kontrol edilebilir yanıtlar",
   },
   {
     number: "02",
-    icon: MessageSquareText,
-    title: "Müşteri destek otomasyonu",
-    description:
-      "Tekrar eden soruları karşılayan, gerektiğinde görüşmeyi ekibinize aktaran bir destek akışı tasarlayalım.",
-    example: "“Siparişimin durumunu öğrenebilir miyim?”",
-    detail: "Ekibinize daha fazla alan açılsın.",
+    title: "Her soruya, bir sonraki adım.",
+    name: "Müşteri destek otomasyonu",
+    description: "Sık sorulan soruları karşılayan, talepleri doğru yere yönlendiren bir destek akışı. İnsan gerektiğinde görüşme ekibinize geçer.",
+    input: "Müşteri mesajları",
+    output: "Yanıt veya doğru ekibe aktarım",
   },
   {
     number: "03",
-    icon: FileText,
-    title: "Akıllı belge işleme",
-    description:
-      "Form, fatura ve raporlardaki bilgileri çıkaralım. Kontrol gerektiren kayıtları insan onayına sunalım.",
-    example: "Belgeden düzenli, işlenebilir veriye.",
-    detail: "Elle veri girişi azalsın.",
+    title: "Belgeden işe yarayan veriye.",
+    name: "Akıllı belge işleme",
+    description: "Fatura, form ve raporlardaki bilgileri düzenli veriye dönüştüren uygulamalar. Belirsiz alanlar kontrol edilmek üzere işaretlenir.",
+    input: "Formlar, faturalar, raporlar",
+    output: "Düzenli veri ve inceleme listesi",
   },
 ];
+
+// An original line study: separate inputs find three ordered paths.
+// Static server-rendered artwork; it does not simulate a running AI product.
+function FlowStudy() {
+  return (
+    <figure className="flow-study" aria-label="Farklı yönlerden gelen çizgilerin üç düzenli akışa dönüşmesini gösteren çizim">
+      <svg viewBox="0 0 840 330" fill="none" aria-hidden="true">
+        <path className="flow-paper" d="M306 16 507 92 426 310 225 234Z" fill="currentColor" />
+        <g stroke="currentColor" strokeWidth="1.15">
+          {Array.from({ length: 27 }, (_, i) => {
+            const start = 38 + i * 9;
+            const end = 64 + Math.floor(i / 9) * 86 + (i % 9) * 2.8;
+            return <path key={i} d={`M-20 ${start} C142 ${start} 177 ${354 - i * 4.9} 337 ${306 - i * 5.9} S524 ${end} 677 ${end} H775`} />;
+          })}
+        </g>
+        {[75, 161, 247].map((y, i) => <g key={y} className="flow-endpoint"><rect x="778" y={y - 3} width="6" height="6" fill="currentColor" /><text x="803" y={y + 5}>0{i + 1}</text></g>)}
+      </svg>
+      <figcaption><span>DAĞINIK BİLGİ</span><span className="flow-caption-line" /><span>ÜÇ ÇALIŞMA ALANI</span></figcaption>
+    </figure>
+  );
+}
 
 export default function Home() {
   return (
     <>
       <a className="skip-link" href="#icerik">İçeriğe geç</a>
-      <header className="site-header">
-        <div className="container header-inner">
-          <a className="brand" href="#" aria-label="Akış AI ana sayfa">
-            <span className="brand-symbol" aria-hidden="true"><i /><i /><i /></span>
-            <span>akış<span className="brand-ai">ai</span></span>
-          </a>
-          <nav aria-label="Ana menü">
-            <a className="nav-link" href="#hizmetler">Hizmetler</a>
-            <a className="nav-link" href="#yaklasim">Yaklaşımımız</a>
-            <a className="header-cta" href="#talep">Birlikte başlayalım <ArrowUpRight size={17} aria-hidden="true" /></a>
-          </nav>
-        </div>
+      <header className="site-header container">
+        <a className="brand" href="#" aria-label="Akış AI ana sayfa">akış<span className="brand-dot">.</span><span className="brand-note">YAPAY ZEKÂ<br />UYGULAMALARI</span></a>
+        <nav aria-label="Ana menü">
+          <a className="nav-link" href="#hizmetler"><span>01</span> Hizmetler</a>
+          <a className="nav-link" href="#yaklasim"><span>02</span> Yaklaşım</a>
+          <a className="header-cta" href="#talep">Bir proje konuşalım <ArrowUpRight size={19} aria-hidden="true" /></a>
+        </nav>
       </header>
 
       <main id="icerik">
         <section className="hero container" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow"><span className="eyebrow-dot" /> Yapay zekâ, işinizin akışında.</p>
-            <h1 id="hero-title">Az tekrar.<br />Daha çok <span className="accent-word">ilerleme<svg viewBox="0 0 370 16" aria-hidden="true"><path d="M4 11C94 1 245 0 366 8" /></svg>.</span></h1>
-            <p className="hero-description">Ekibinizin zamanını alan işleri akıllı akışlara dönüştürelim. Bilginize ulaşın, müşterilerinize yetişin, asıl işinize odaklanın.</p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#talep">İhtiyacınızı konuşalım <ArrowUpRight size={20} aria-hidden="true" /></a>
-              <a className="text-link" href="#hizmetler">Hizmetleri keşfedin <ArrowDown size={16} aria-hidden="true" /></a>
+          <div className="hero-topline"><p>İŞ SÜREÇLERİ İÇİN YAPAY ZEKÂ</p><span>AKIŞ AI — 2026</span></div>
+          <h1 id="hero-title">İşinize <em>alan açın.</em></h1>
+          <div className="hero-bottom">
+            <FlowStudy />
+            <div className="hero-intro">
+              <p>Şirket bilginize ulaşmayı ve her gün tekrarlanan işleri kolaylaştıran yapay zekâ uygulamaları geliştiriyoruz.</p>
+              <a className="round-link" href="#talep"><span>İhtiyacınızı anlatın</span><span className="round-arrow"><ArrowUpRight size={25} strokeWidth={1.4} aria-hidden="true" /></span></a>
             </div>
-            <p className="hero-note"><ShieldCheck size={17} aria-hidden="true" /> Kontrol sizde. Yapay zekâ işinize destek olsun.</p>
           </div>
-
-          <div className="flow-illustration" role="img" aria-label="Örnek bilgi akışı: Şirket dokümanları bilgi asistanına aktarılır, asistan sorulara kaynak göstererek yanıt verir.">
-            <div className="flow-caption" aria-hidden="true"><span className="small-dot" /> Bir bilgi akışı, sadeleşti.</div>
-            <div className="flow-source" aria-hidden="true">
-              <div className="flow-source-icon"><Layers3 size={21} /></div>
-              <div><strong>Şirket bilginiz</strong><span>Dokümanlar · Kılavuzlar · Notlar</span></div>
-              <span className="source-count">GİRDİ</span>
-            </div>
-            <div className="flow-connector" aria-hidden="true"><span /><ArrowDown size={15} /></div>
-            <div className="flow-engine" aria-hidden="true">
-              <span className="engine-icon"><Sparkles size={24} /></span>
-              <div><span className="engine-label">AKIŞ AI</span><strong>Bilgi anlam kazanır.</strong></div>
-              <div className="engine-orbit"><i /><i /><i /></div>
-            </div>
-            <div className="flow-connector" aria-hidden="true"><span /><ArrowDown size={15} /></div>
-            <div className="flow-answer" aria-hidden="true">
-              <div className="answer-question"><span className="avatar">E</span><p>İzin talebimi nasıl iletebilirim?</p></div>
-              <div className="answer-response"><span className="answer-spark"><Sparkles size={16} /></span><div><p>İzin talep formunu doldurup ekip yöneticinizin onayına iletebilirsiniz.</p><span className="answer-source"><FileText size={12} /> Çalışan rehberi · Bölüm 4</span></div></div>
-              <div className="answer-footer"><Check size={14} /> Kaynağı belli. Kontrol edilebilir.</div>
-            </div>
-            <p className="flow-disclaimer" aria-hidden="true">Örnek senaryo · Gerçek şirket verisi içermez.</p>
-          </div>
+          <div className="hero-baseline"><span>Bilgi asistanları / Destek akışları / Belge işleme</span><a href="#hizmetler">Çalışma alanlarımız <ArrowDown size={16} aria-hidden="true" /></a></div>
         </section>
 
-        <div className="principles-strip">
-          <div className="container principles-inner">
-            <p>Teknoloji bir araç.<br /><strong>Odak noktamız sizin işiniz.</strong></p>
-            <span><Check size={18} aria-hidden="true" /> İhtiyaca göre çözüm</span>
-            <span><Check size={18} aria-hidden="true" /> İnsan denetimi</span>
-            <span><Check size={18} aria-hidden="true" /> Ölçülebilir süreç</span>
-          </div>
-        </div>
-
-        <section className="services-section container section-spacing" id="hizmetler" aria-labelledby="services-title">
-          <div className="section-heading">
-            <div><p className="eyebrow">NEREDEN BAŞLAYABİLİRİZ?</p><h2 id="services-title">Doğru yerde,<br />işe yarayan yapay zekâ.</h2></div>
-            <p className="section-intro">Her işe aynı çözüm olmaz. İş akışınızdaki gerçek bir ihtiyacı bulalım, oradan başlayalım.</p>
-          </div>
-          <div className="service-grid">
-            {offerings.map((offering) => (
-              <article className="service-card" key={offering.number}>
-                <div className="service-card-top"><span className="service-icon"><offering.icon size={24} strokeWidth={1.7} aria-hidden="true" /></span><span className="service-number">/{offering.number}</span></div>
-                <h3>{offering.title}</h3>
-                <p className="service-description">{offering.description}</p>
-                <div className="service-example"><span className="example-label">BİR KULLANIM ÖRNEĞİ</span><p>{offering.example}</p></div>
-                <a className="service-link" href="#talep" aria-label={`${offering.title} için ihtiyacınızı paylaşın`}>{offering.detail}<ArrowUpRight size={20} aria-hidden="true" /></a>
+        <section className="services-section container" id="hizmetler" aria-labelledby="services-title">
+          <div className="section-opening"><p className="section-index">01 / NELER YAPIYORUZ</p><h2 id="services-title">Her işin<br />kendi akışı var.</h2></div>
+          <div className="service-list">
+            {services.map((service) => (
+              <article className="service-row" key={service.number}>
+                <span className="service-number" aria-hidden="true">{service.number}</span>
+                <div className="service-title"><p>{service.name}</p><h3>{service.title}</h3></div>
+                <div className="service-detail"><p>{service.description}</p><dl><div><dt>Girdi</dt><dd>{service.input}</dd></div><div><dt>Sonuç</dt><dd>{service.output}</dd></div></dl></div>
+                <a className="service-action" href="#talep" aria-label={`${service.name} için ihtiyacınızı paylaşın`}><ArrowUpRight size={28} strokeWidth={1.25} aria-hidden="true" /></a>
               </article>
             ))}
           </div>
         </section>
 
         <section className="approach-section" id="yaklasim" aria-labelledby="approach-title">
-          <div className="container">
-            <div className="section-heading approach-heading"><div><p className="eyebrow">BÜYÜK VAATLERDEN ÖNCE, KÜÇÜK ADIMLAR.</p><h2 id="approach-title">Birlikte anlayalım.<br />Birlikte geliştirelim.</h2></div><p className="section-intro">Önce süreci tanırız. Sonra kontrollü bir pilotla neyin işe yaradığını görürüz.</p></div>
-            <ol className="steps-grid">
-              <li><div className="step-top"><span>01</span><ArrowRight size={23} aria-hidden="true" /></div><h3>İhtiyacı netleştirelim.</h3><p>Tekrar eden işi, kullandığınız araçları ve beklediğiniz sonucu birlikte tanımlayalım.</p></li>
-              <li><div className="step-top"><span>02</span><ArrowRight size={23} aria-hidden="true" /></div><h3>Küçük bir pilot kuralım.</h3><p>Sınırlı bir senaryoda çözümü deneyelim. Veri erişimini ve insan kontrolünü baştan belirleyelim.</p></li>
-              <li><div className="step-top"><span>03</span><Check size={23} aria-hidden="true" /></div><h3>Ölçerek geliştirelim.</h3><p>Yanıt kalitesini, harcanan zamanı ve ekibinizin geri bildirimlerini değerlendirerek ilerleyelim.</p></li>
+          <div className="container approach-layout">
+            <div className="approach-copy"><p className="section-index">02 / NASIL ÇALIŞIYORUZ</p><h2 id="approach-title">Önce doğru<br />soruyu sorarız.</h2><p>Bir aracı işinize uydurmakla başlamayız. Nerede zaman kaybettiğinize, hangi bilginin eksik kaldığına bakarız.</p><div className="approach-mark" aria-hidden="true"><span /><span /><span /></div></div>
+            <ol className="process-list">
+              <li><span className="process-number">01</span><div><h3>İşi anlayalım.</h3><p>Tekrarlanan adımı, kullandığınız araçları ve çözülmesini istediğiniz sorunu birlikte tanımlayalım.</p></div></li>
+              <li><span className="process-number">02</span><div><h3>Bir senaryoda deneyelim.</h3><p>Sınırlı bir pilot kuralım. Hangi veriye erişileceğini ve nerede insan onayı gerekeceğini baştan belirleyelim.</p></div></li>
+              <li><span className="process-number">03</span><div><h3>Sonuca bakarak ilerleyelim.</h3><p>Yanıtları ve hata örneklerini inceleyelim. Ekibin geri bildirimiyle çözümün nerede işe yaradığını görelim.</p></div></li>
             </ol>
           </div>
         </section>
 
-        <section className="contact-section" id="talep" aria-labelledby="contact-title">
-          <div className="container contact-grid">
-            <div className="contact-copy"><p className="eyebrow">İLK ADIM, SİZİ DİNLEMEK.</p><h2 id="contact-title">Hangi işiniz<br />daha kolay<br /><span>aksın?</span></h2><p>Aklınızdaki ihtiyacı birkaç cümleyle paylaşın. Başlamak için tüm cevapları bilmeniz gerekmiyor.</p><div className="contact-divider" /><div className="demo-note"><ShieldCheck size={21} aria-hidden="true" /><p><strong>Bu bir değerlendirme demosudur.</strong> Lütfen yalnızca kurgusal test verisi kullanın. Gönderdiğiniz test talebi kaydedilir; e-posta gönderilmez.</p></div></div>
-            <LeadForm />
-          </div>
+        <section className="contact-section container" id="talep" aria-labelledby="contact-title">
+          <div className="contact-copy"><p className="section-index">03 / BİR BAŞLANGIÇ</p><h2 id="contact-title">Aklınızdaki<br />iş nedir<span>?</span></h2><p>Her gün tekrar ettiğiniz bir adım ya da bulmakta zorlandığınız bir bilgi. Bir örnekle başlayabiliriz.</p><a className="back-to-services" href="#hizmetler">Hizmetlere tekrar bak <ArrowUpRight size={16} aria-hidden="true" /></a><aside className="demo-note"><span>DEMO NOTU</span><p>Bu bir değerlendirme projesidir. Yalnızca kurgusal test verisi kullanın. Form kaydedilir; e-posta gönderilmez.</p></aside></div>
+          <LeadForm />
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-inner"><a className="brand" href="#" aria-label="Akış AI sayfa başına dön"><span className="brand-symbol" aria-hidden="true"><i /><i /><i /></span><span>akış<span className="brand-ai">ai</span></span></a><p>İşinize alan açan yapay zekâ.</p><span>Akış AI, kurgusal bir markadır. <span className="footer-year">© 2026</span></span></div></footer>
+      <footer className="site-footer"><div className="container"><div className="footer-top"><span>DAHA İYİ ÇALIŞAN İŞLER İÇİN.</span><a href="#">Başa dön <ArrowUpRight size={18} aria-hidden="true" /></a></div><div className="footer-wordmark" aria-hidden="true">akış<span>.</span><svg viewBox="0 0 200 200" fill="none"><path d="M25 175 175 25M25 25H175V175" stroke="currentColor" strokeWidth="8" /></svg></div><div className="footer-bottom"><span>© 2026 Akış AI</span><span>Kurgusal marka · Değerlendirme çalışması</span></div></div></footer>
     </>
   );
 }

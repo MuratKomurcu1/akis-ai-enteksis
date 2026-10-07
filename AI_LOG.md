@@ -61,3 +61,15 @@ Bu kayıt Enteksis ALEX-24H-v1.0 uygulama çalışmasının gerçek geliştirme 
 - Ölçütler: https://ai.enteksis.com.tr/degerlendirme-rehberi.md
 - Next.js API ve layout belgeleri: kurulu `next` paketindeki `dist/docs/` dizini.
 - Vercel kurulumu: https://vercel.com/get-started.md
+
+## Arayüz revizyonu — 8 Ekim 2026
+
+Kullanıcı ilk arayüzdeki hazır AI şablonu hissinin giderilmesini ve daha özgün bir tasarım istedi. Codex ana ajanı sayfa ve CSS'yi yeniden kurdu; ayrı ajanlar form sunumunu ve görsel kaliteyi inceledi.
+
+- Kırık beyaz/kömür paleti, sınırlı chartreuse vurgu, geniş tipografik hiyerarşi ve yerel Instrument Serif italik kullanıldı. Fontun OFL lisansı depoya eklendi.
+- İç içe sohbet maketi, parıltı/kalkan ikonları ve eşit hizmet kartları kaldırıldı. Hizmetler, girdi ve sonucu açıklayan numaralı satırlar olarak düzenlendi.
+- Akış markası için 27 çizginin üç düzenli çıkışa dönüştüğü özgün, statik SVG çizimi oluşturuldu. Bu çizim çalışan bir modelin arayüzü olarak sunulmaz.
+- Form sunumu sadeleştirildi; alan etiketleri, doğrulama, kayıt ve yeniden deneme davranışı korundu. Numara etiketleri erişilebilir alan adını değiştirmeyecek biçimde label dışına taşındı.
+- İlk masaüstü Axe taraması giriş animasyonundaki opacity sırasında düşük kontrast buldu. Opacity kaldırıldı; yalnız küçük konum hareketi kaldı ve reduced-motion tercihi desteklendi.
+- Production build, ESLint ve TypeScript geçti. Mevcut Playwright testleri değiştirilmeden 8/8 geçti; gerçek API kaydı kullanıldı. Son görsel doğrulama kaydı: `77a52f07-3573-461f-9809-691aa33122e6`.
+- 390/1440 px Axe taramaları temiz. 320, 390, 768, 1024 ve 1440 px ölçümlerinde yatay taşma yok. Masaüstü, mobil, form ve gerçek başarı ekranları görsel olarak incelendi.
