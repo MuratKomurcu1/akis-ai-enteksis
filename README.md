@@ -47,7 +47,7 @@ Form → ortak Zod şeması → POST /api/leads → sunucu doğrulaması
 - **Ortak doğrulama:** [lead-schema.ts](src/lib/lead-schema.ts) hem formda hem API'de kullanılır. Ad soyad 2–80, açıklama 20–2.000 karakterdir; e-posta biçimi ve en fazla 254 karakter sınırı doğrulanır. Hizmet yalnız tanımlı üç seçenekten biri olabilir. Metinler kırpılır, e-posta küçük harfe dönüştürülür.
 - **Kalıcı kayıt:** Serverless sunucunun belleği veya yerel dosyası yerine PostgreSQL kullanılır. Kayıt kimliği, istek kimliği, içerik özeti, dört form alanı ve oluşturulma zamanı saklanır.
 - **Veritabanında tutarlılık:** Tekrar kontrolü, aynı e-posta için 10 dakikada en fazla 5 yeni kayıt sınırı ve insert aynı transaction'dadır. Transaction kilitleri, eşzamanlı isteklerde ve birden fazla sunucu örneğinde kontrolün tutarlı olmasını sağlar.
-- **Küçük arayüz kapsamı:** Hizmetler, örnek kullanım, yaklaşım ve talep formu tek sayfadadır. Yerel ve lisanslı fontlar kullanılır. Arayüz; büyük tipografi, özgün akış çizimi, numaralı hizmet satırları ve açık form yerleşimiyle düzenlenmiştir. Alan etiketleri, klavye odağı, hata açıklamaları ve durum bildirimleri form akışının parçasıdır.
+- **Küçük arayüz kapsamı:** Hizmetler, örnek kullanım, yaklaşım ve talep formu tek sayfadadır. Yerel fontlar kullanılır. Alan etiketleri, klavye odağı, hata açıklamaları ve durum bildirimleri form akışının parçasıdır.
 
 API yeni kayıt için `201`, aynı isteğin güvenli tekrarı için aynı kayıt kimliğiyle `200` döndürür. Geçersiz alanlar `400`, farklı kaynak `403`, aynı istek kimliğiyle farklı içerik `409`, büyük gövde `413`, yanlış içerik türü `415`, oran sınırı `429`, doğrulanamayan kayıt `503` üretir.
 

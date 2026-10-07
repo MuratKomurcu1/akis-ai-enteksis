@@ -73,3 +73,7 @@ Kullanıcı ilk arayüzdeki hazır AI şablonu hissinin giderilmesini ve daha ö
 - İlk masaüstü Axe taraması giriş animasyonundaki opacity sırasında düşük kontrast buldu. Opacity kaldırıldı; yalnız küçük konum hareketi kaldı ve reduced-motion tercihi desteklendi.
 - Production build, ESLint ve TypeScript geçti. Mevcut Playwright testleri değiştirilmeden 8/8 geçti; gerçek API kaydı kullanıldı. Son görsel doğrulama kaydı: `77a52f07-3573-461f-9809-691aa33122e6`.
 - 390/1440 px Axe taramaları temiz. 320, 390, 768, 1024 ve 1440 px ölçümlerinde yatay taşma yok. Masaüstü, mobil, form ve gerçek başarı ekranları görsel olarak incelendi.
+
+## Önceki arayüze dönüş — 8 Ekim 2026
+
+Kullanıcı son editoryal tasarımı beğenmediğini belirterek önceki tasarıma dönülmesini istedi. Mavi-beyaz arayüz, önceki form sunumu, ikon ve font düzeni geri getirildi. Uygulama kaynakları `3dedf77` sürümüyle eşleşecek şekilde geri alındı; veritabanı ve API davranışı değiştirilmedi. Tasarım denemesinin AI çalışma kaydı süreç geçmişi olarak korundu.

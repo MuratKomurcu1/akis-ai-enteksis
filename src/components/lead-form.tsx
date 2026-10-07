@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { ArrowUpRight, LoaderCircle } from "lucide-react";
+import { ArrowUpRight, Check, CircleAlert, LoaderCircle } from "lucide-react";
 import { leadSchema, services } from "@/lib/lead-schema";
 
 type FieldName = "name" | "email" | "service" | "description";
@@ -115,9 +115,10 @@ export function LeadForm() {
     return (
       <div className="lead-form-panel success-panel">
         <div ref={feedbackRef} className="success-content" role="status" tabIndex={-1}>
-          <p className="form-kicker">PROJE NOTU / ALINDI</p>
+          <span className="success-icon"><Check size={30} aria-hidden="true" /></span>
+          <p className="eyebrow">TEST TALEBİ ALINDI</p>
           <h3>Talebiniz kaydedildi.</h3>
-          <p>Test notunuz alındı. Bu demo kapsamında e-posta gönderilmez.</p>
+          <p>Test talebiniz sunucuda başarıyla saklandı. Bu demo kapsamında e-posta gönderilmez.</p>
           <div className="record-reference"><span>Kayıt numarası</span><code>{recordId}</code></div>
         </div>
         <button className="button button-primary" type="button" onClick={() => { setPhase("idle"); setRecordId(""); requestAnimationFrame(() => formRef.current?.querySelector<HTMLInputElement>("[name=name]")?.focus()); }}>Yeni bir test talebi oluştur <ArrowUpRight size={18} aria-hidden="true" /></button>
@@ -127,49 +128,22 @@ export function LeadForm() {
 
   return (
     <form className="lead-form-panel" ref={formRef} onSubmit={handleSubmit} noValidate aria-busy={phase === "pending"}>
-      <div className="form-heading">
-        <p className="form-kicker">PROJE NOTU / 01</p>
-        <h3>İlk adımı tarif edin.</h3>
-        <p className="form-heading-note">Kısaca anlatın. Tüm alanlar zorunludur.</p>
-      </div>
-      {phase === "invalid" && <div className="form-alert" role="alert"><p>Lütfen işaretli alanları kontrol edin.</p></div>}
-      {phase === "error" && <div ref={feedbackRef} className="form-alert" role="alert" tabIndex={-1}><p>{message}</p></div>}
+      <div className="form-heading"><h3>Birlikte başlayalım.</h3><p>Tüm alanlar zorunludur.</p></div>
+      {phase === "invalid" && <div className="form-alert" role="alert"><CircleAlert size={19} aria-hidden="true" /><p>Lütfen işaretli alanları kontrol edin.</p></div>}
+      {phase === "error" && <div ref={feedbackRef} className="form-alert" role="alert" tabIndex={-1}><CircleAlert size={19} aria-hidden="true" /><p>{message}</p></div>}
 
       <fieldset disabled={phase === "pending"}>
         <legend className="sr-only">Test talebi bilgileri</legend>
         <div className="form-row">
-          <div className="form-field">
-            <div className="field-label"><span className="field-number" aria-hidden="true">01</span><label htmlFor="name">Ad soyad</label></div>
-            <input id="name" name="name" type="text" autoComplete="name" placeholder="Deniz Örnek" required minLength={2} maxLength={80} aria-invalid={Boolean(errors.name?.length)} aria-describedby={describedBy("name")} />
-            {fieldError("name")}
-          </div>
-          <div className="form-field">
-            <div className="field-label"><span className="field-number" aria-hidden="true">02</span><label htmlFor="email">E-posta</label></div>
-            <input id="email" name="email" type="email" autoComplete="email" placeholder="deniz@example.com" required maxLength={254} aria-invalid={Boolean(errors.email?.length)} aria-describedby={describedBy("email")} />
-            {fieldError("email")}
-          </div>
+          <div className="form-field"><label htmlFor="name">Ad soyad</label><input id="name" name="name" type="text" autoComplete="name" placeholder="Ör. Deniz Örnek" required minLength={2} maxLength={80} aria-invalid={Boolean(errors.name?.length)} aria-describedby={describedBy("name")} />{fieldError("name")}</div>
+          <div className="form-field"><label htmlFor="email">E-posta</label><input id="email" name="email" type="email" autoComplete="email" placeholder="deniz@example.com" required maxLength={254} aria-invalid={Boolean(errors.email?.length)} aria-describedby={describedBy("email")} />{fieldError("email")}</div>
         </div>
-        <div className="form-field">
-          <div className="field-label"><span className="field-number" aria-hidden="true">03</span><label htmlFor="service">Hizmet</label></div>
-          <div className="select-wrapper">
-            <select id="service" name="service" defaultValue="" required aria-invalid={Boolean(errors.service?.length)} aria-describedby={describedBy("service")}>
-              <option value="" disabled>Bir hizmet seçin</option>
-              {services.map((service) => <option value={service.value} key={service.value}>{service.label}</option>)}
-            </select>
-            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7.5 5 5 5-5" /></svg>
-          </div>
-          {fieldError("service")}
-        </div>
-        <div className="form-field">
-          <div className="field-label"><span className="field-number" aria-hidden="true">04</span><label htmlFor="description">Açıklama</label></div>
-          <textarea id="description" name="description" rows={4} placeholder="Ör. Ekibimiz aynı soruların yanıtını farklı belgelerde arıyor." required minLength={20} maxLength={2000} aria-invalid={Boolean(errors.description?.length)} aria-describedby={describedBy("description", "description-hint")} />
-          <p className="field-hint" id="description-hint">20–2.000 karakter. Yalnızca kurgusal test verisi yazın.</p>
-          {fieldError("description")}
-        </div>
+        <div className="form-field"><label htmlFor="service">Hizmet</label><div className="select-wrapper"><select id="service" name="service" defaultValue="" required aria-invalid={Boolean(errors.service?.length)} aria-describedby={describedBy("service")}><option value="" disabled>Bir hizmet seçin</option>{services.map((service) => <option value={service.value} key={service.value}>{service.label}</option>)}</select><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7.5 5 5 5-5" /></svg></div>{fieldError("service")}</div>
+        <div className="form-field"><label htmlFor="description">Açıklama</label><textarea id="description" name="description" rows={4} placeholder="Hangi süreci kolaylaştırmak istiyorsunuz? Kurgusal bir örnek paylaşın…" required minLength={20} maxLength={2000} aria-invalid={Boolean(errors.description?.length)} aria-describedby={describedBy("description", "description-hint")} /><p className="field-hint" id="description-hint">20–2.000 karakter. Yalnızca kurgusal test verisi yazın.</p>{fieldError("description")}</div>
         <div className="honeypot-field" aria-hidden="true"><label htmlFor="website">Web sitesi</label><input type="text" name="website" id="website" tabIndex={-1} autoComplete="off" /></div>
         <button className="button button-primary submit-button" type="submit" disabled={phase === "pending"}>{phase === "pending" ? <>Gönderiliyor… <LoaderCircle className="loading-icon" size={19} aria-hidden="true" /></> : <>Talebi gönder <ArrowUpRight size={20} aria-hidden="true" /></>}</button>
       </fieldset>
-      <p className="form-footnote" role={phase === "pending" ? "status" : undefined}>{phase === "pending" ? "Talebiniz kaydediliyor. Lütfen bekleyin." : "Demo formu. Gerçek bir iletişim süreci başlatmaz."}</p>
+      <p className="form-footnote" role={phase === "pending" ? "status" : undefined}>{phase === "pending" ? "Talebiniz kaydediliyor. Lütfen bekleyin." : "Test talebiniz, gönderim başarılı olduğunda kaydedilir."}</p>
       <noscript><p className="form-alert">Bu formu göndermek için JavaScript’i etkinleştirin.</p></noscript>
     </form>
   );
