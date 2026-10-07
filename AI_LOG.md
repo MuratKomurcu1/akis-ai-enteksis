@@ -43,8 +43,17 @@ Bu kayıt Enteksis ALEX-24H-v1.0 uygulama çalışmasının gerçek geliştirme 
 - `npm test`: 43/43 test geçti. Doğrulama, normalizasyon, origin/gövde sınırı, gerçek kaydı bekleme, depolama hatası, boş kayıt kimliği, tekrar ve oran sınırı sözleşmeleri test edildi. Birim testlerindeki kayıt bağımlılığı taklittir.
 - `npm run test:e2e`: localhost üzerinde 8/8 geçti. Başarı senaryosu gerçek API ve Supabase'e gider; hata/pending senaryoları kontrollü ağ yanıtları kullanır. 390/1440 px Axe taraması sıfır ihlal, yatay taşma yok.
 - `npm run verify:live`: yerel API'nin Supabase'e yazdığı kayıt bağımsız SELECT ile doğrulandı; tekrar aynı kaydı döndürdü, farklı içerik 409 aldı, geçersiz alanlar reddedildi, eşzamanlı yeni kayıtlarda 5/10 dakika sınırı korundu. Anonim okuma engellendi. Yalnız kurgusal `example.com` verisi kullanıldı.
-- ESLint, TypeScript ve production build geçti. Canlı deployment doğrulaması yayın sonrasında bu kayda eklenecek.
+- ESLint, TypeScript ve production build geçti. GitHub Actions aynı kontrolleri temiz Node.js 24 ortamında da başarıyla çalıştırdı.
 - `npm audit --omit=dev`: 0 bulgu. Tam audit, ESLint'in geçişli `braces` bağımlılığı zincirinde 5 yüksek bulgu raporladı. Otomatik zorlayıcı çözüm Next.js lint paketini eski ana sürüme düşürdüğü için uygulanmadı; bu geliştirme aracı sınırı README'de açıklandı.
+
+## Canlı yayın kanıtı
+
+- Vercel: https://akis-ai-enteksis.vercel.app — oturum açmadan HTTP 200.
+- Kaynak: https://github.com/MuratKomurcu1/akis-ai-enteksis — herkese açık.
+- 8 Ekim 2026 00:26 İstanbul: canlı API → Supabase kalıcılık, tekrar, 409 çakışma, sunucu doğrulaması, eşzamanlı 429 sınırı ve anonim erişim reddi bağımsız sorguyla doğrulandı. Test kayıt kimliği: `8298f1e6-a64c-47ac-ac73-1fac2dffee14`.
+- Canlı Chromium testleri: 8/8 geçti; gerçek POST 201 ve kayıt kimliği başarı ekranında görüldü. 390/1440 px erişilebilirlik ve yatay taşma kontrolleri temiz. Ayrı gerçek başarı ekranının kayıt kimliği: `9c04ea88-2570-446d-bf3a-790a0368987d`. Kontrollü hata senaryoları mock yanıt kullanır; başarılı kayıt senaryolarında mock yoktur.
+- Vercel ilk proje varsayılanı “Other” olduğu için framework hem `vercel.json` hem proje ayarında Next.js olarak açıkça tanımlandı. Yerel raporlar ve araç dosyaları `.vercelignore` ile upload dışında bırakıldı.
+- Vercel Git bağlantısı, hesapta GitHub Login Connection bulunmadığından kurulamadı. Canlı yayın CLI ile tamamlandı; otomatik deploy varmış gibi raporlanmadı.
 
 ## Kaynaklar
 

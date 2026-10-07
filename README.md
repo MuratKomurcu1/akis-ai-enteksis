@@ -2,7 +2,11 @@
 
 Enteksis değerlendirmesi için hazırlanmış, kurgusal bir yapay zekâ hizmet firmasının Türkçe landing page'i. Ziyaretçi hizmetleri inceleyip test talebi gönderir; başarı mesajı ancak talep sunucuda kalıcı olarak kaydedildiğinde görünür.
 
-Canlı adres ve incelemeye açık depo bağlantısı, yayın tamamlandıktan sonra bu bölüme eklenecek. Teslim commit kimliği son sürüm kesinleşince `git rev-parse HEAD` ile alınarak teslim alanına yazılacak.
+- **Canlı demo:** https://akis-ai-enteksis.vercel.app
+- **Kaynak kod:** https://github.com/MuratKomurcu1/akis-ai-enteksis
+- **AI çalışma kaydı:** [AI_LOG.md](AI_LOG.md)
+
+Teslim commit kimliği `git rev-parse HEAD` ile alınarak teslim alanına yazılır. Bu kimlik, canlı sürümün kaynak koduyla eşleşmelidir.
 
 ## Yerel kurulum
 
@@ -83,8 +87,8 @@ npm run verify:live
 | --- | --- | --- |
 | ESLint, TypeScript, production build | Statik kontroller ve derleme | Geçti |
 | Vitest | Ortak doğrulama, API sözleşmesi, gecikme ve hata davranışı; kayıt bağımlılığı taklit edilir | 43 test geçti |
-| Playwright + axe | Gerçek form gönderimi, istemci/sunucu hataları, klavye odağı, 390/1440 px taşma ve otomatik erişilebilirlik | 8/8 yerel test geçti |
-| `verify:live` | Gerçek kalıcılık, tekrar, çakışma, geçersiz alanlar, eşzamanlı oran sınırı | Gerçek Supabase ile geçti; anonim okuma engellendi |
+| Playwright + axe | Gerçek form gönderimi, istemci/sunucu hataları, klavye odağı, 390/1440 px taşma ve otomatik erişilebilirlik | 8/8 yerel ve 8/8 canlı test geçti |
+| `verify:live` | Gerçek kalıcılık, tekrar, çakışma, geçersiz alanlar, eşzamanlı oran sınırı | Yerel ve canlı API → Supabase doğrulandı; anonim okuma engellendi |
 
 `verify:live` API'den bağımsız olarak Supabase'den kayıt okur ve her çalıştırmada 5 kurgusal kayıt bırakır. İsteğe bağlı `SUPABASE_ANON_KEY` veya `NEXT_PUBLIC_SUPABASE_ANON_KEY` varsa anonim okumanın engellendiğini de denetler; yoksa bu kontrolün atlandığını çıktıda belirtir. Testler yalnız `example.com` adresleri ve kurgusal bilgiler kullanır. Otomatik erişilebilirlik taraması tek başına tam erişilebilirlik uygunluğu iddiası değildir.
 
@@ -97,6 +101,8 @@ GitHub Actions, Node.js 24 üzerinde lint, birim testleri, build ve tip kontrol�
 3. Migration tamamlandıktan sonra deploy edin. Ortam değişkenlerini sonradan değiştirirseniz yeni deployment oluşturun.
 4. Yayın adresini `BASE_URL` ortam değişkenine vererek `npm run test:e2e` ve `npm run verify:live` çalıştırın. Veritabanı doğrulamasının kullandığı yerel Supabase bilgileri yayın ortamıyla aynı projeye ait olmalıdır.
 5. Canlı bağlantı ile depo erişimini oturum açmamış bir tarayıcıda kontrol edin. Son kodu commit edip `git rev-parse HEAD` çıktısını teslim edin. Sonraki commit'ler değerlendirme sistemindeki teslimi kendiliğinden güncellemez.
+
+Mevcut teslim, Vercel CLI ile yayımlandı. Vercel GitHub otomatik dağıtım bağlantısı hesapta ek GitHub Login Connection gerektirdiğinden etkinleştirilmedi; GitHub Actions kontrolleri bağımsız çalışır. Sonraki yayın için `vercel deploy --prod` kullanılır. `vercel.json` Next.js framework'ünü ve Supabase'e yakın Frankfurt (`fra1`) fonksiyon bölgesini açıkça belirtir.
 
 ## Güvenlik ve kapsam sınırları
 
@@ -116,7 +122,7 @@ Bu bir değerlendirme demosudur: yalnız kurgusal veri girilmelidir. E-posta gö
 | Gönderiliyor, başarı ve hata durumları | Devre dışı gönderim, alan hataları, korunan form verisi, kayıt kimlikli başarı |
 | Sunucuda kalıcı test kaydı | Supabase PostgreSQL, [migration](supabase/migrations/001_leads.sql) |
 | Yalnız kayıttan sonra başarı | Beklenen RPC sonucu ve kayıt kimliği kontrolü; birim, E2E ve bağımsız kalıcılık kontrolleri |
-| Canlı URL ve incelemeye açık kaynak kod | Yayın ve erişim kontrolü tamamlanınca bağlantılar eklenecek |
+| Canlı URL ve incelemeye açık kaynak kod | Belgenin başındaki canlı demo ve herkese açık GitHub deposu |
 | README, AI günlüğü ve teslim commit'i | Bu belge, [AI_LOG.md](AI_LOG.md), son teslimde `git rev-parse HEAD` |
 
 AI ile çalışma biçimi ve doğrulama kaydı [AI_LOG.md](AI_LOG.md) dosyasındadır.
